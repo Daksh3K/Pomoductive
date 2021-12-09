@@ -16,7 +16,7 @@ body{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 25%;
+    width: 20%;
     height: 60%;
     background-color: rgb(221, 221, 221);
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02), 0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035), 0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05), 0 100px 80px rgba(0, 0, 0, 0.07);
@@ -24,14 +24,17 @@ body{
     padding: 13px;
 
 
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .todo-items{
-    margin: 8px;
+
+    width: 333.500px;
+    height: 99.438px;
+    margin: 8px auto;
     display: flex;
     flex-grow: 1;
     flex-direction: row;
