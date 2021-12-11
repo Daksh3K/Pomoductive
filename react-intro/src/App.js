@@ -7,11 +7,12 @@ var todos = todosData
 class App extends React.Component{
     constructor() {
         super()
-        this.state = {todos: todos}
-        this.handleChange = this.handleChange.bind(this);
+        this.state = {todos: todos, text: ""}
+        this.handleItemCheck = this.handleItemCheck.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (childState) => {
+    handleItemCheck = (childState) => {
         var counter = 0;
         this.setState((prevState) => {
             for (var item of prevState.todos) {
@@ -27,13 +28,46 @@ class App extends React.Component{
         })
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        if (this.state.text.length === 0) {
+            return;
+        }
+
+        const newItem = {
+            id: Math.floor(Math.random() * 10),
+            text: this.state.text,
+            completed: false
+        }
+
+        this.setState((prevState) => {
+            var prevTodos = prevState.todos
+            prevTodos.push(newItem)
+            return ({todos: prevTodos, text: ""}) 
+        }, () => console.log(typeof this.state.todos))
+    }
+
+
+    handleChange = (e) => {
+        this.setState({text: e.target.value})
+    }
+
 
 
     render() {
-        const todoItems = this.state.todos.map(item => <TodoItem key={item.id} items={item} changeFunction={this.handleChange} />)
+        console.log(this.state.todos)
+        const todoItems = this.state.todos.map(item => <TodoItem key={item.id} items={item} changeFunction={this.handleItemCheck} />)
         return(
             <div className="todo-list">
                 {todoItems}
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        id="todo-input"
+                        onChange={this.handleChange}
+                        value={this.state.text}
+                    />
+                    <button>+</button>
+                </form>
             </div>
         )
 
