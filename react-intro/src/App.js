@@ -53,21 +53,31 @@ class App extends React.Component{
     }
 
 
-
     render() {
         console.log(this.state.todos)
         const todoItems = this.state.todos.map(item => <TodoItem key={item.id} items={item} changeFunction={this.handleItemCheck} />)
         return(
-            <div className="todo-list">
+            <div className="list-container">
+
+                <h1 className="heading"> To-Do List </h1>
+                <hr className="heading-line"/>
+
+
                 {todoItems}
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        id="todo-input"
-                        onChange={this.handleChange}
-                        value={this.state.text}
-                    />
-                    <button>+</button>
-                </form>
+
+                <div className="input-container">
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            className="list-input"
+                            id="todo-input"
+                            onChange={this.handleChange}
+                            value={this.state.text}
+                            className="list-input"
+                        />
+                        <button>+</button>
+                    
+                    </form>
+                </div>
             </div>
         )
 

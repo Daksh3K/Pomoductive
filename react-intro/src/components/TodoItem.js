@@ -35,7 +35,7 @@ class TodoItem extends React.Component{
         }
 
         return(
-            <div className="todo-items">
+            <div className="">
                 <input type="checkbox" checked={this.state.checked} onChange={this.handleCheck}/>
                 <p style={{textDecoration:textDecor}}>{this.props.items.text}</p>
             </div>
