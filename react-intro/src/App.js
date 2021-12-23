@@ -28,14 +28,28 @@ class App extends React.Component{
         })
     }
 
+    generateUniqueID = () => {
+        do {
+            var isFound = false;
+            var id = Math.floor(Math.random() * 10)
+            for (var item of todos) {
+                if (item.id === id) {
+                    isFound = true;
+                }
+            }
+        } while (isFound)
+        return id;
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.state.text.length === 0) {
             return;
         }
-
+        
         const newItem = {
-            id: Math.floor(Math.random() * 10),
+            // TODO: add a check to make sure the id generated is unique.
+            id: this.generateUniqueID(),
             text: this.state.text,
             completed: false
         }
@@ -66,7 +80,7 @@ class App extends React.Component{
                 {todoItems}
 
                 <div className="input-container">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit} className="input-container-flex">
                         <input
                             className="list-input"
                             id="todo-input"
@@ -74,7 +88,7 @@ class App extends React.Component{
                             value={this.state.text}
                             className="list-input"
                         />
-                        <button>+</button>
+                        <button className="list-input-button">+</button>
                     
                     </form>
                 </div>

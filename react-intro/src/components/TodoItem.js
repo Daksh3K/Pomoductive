@@ -1,4 +1,5 @@
 import React from "react";
+import "./TodoItem.css";
 
 
 class TodoItem extends React.Component{
@@ -19,10 +20,6 @@ class TodoItem extends React.Component{
             return {checked: !prevState.checked}
         }, () => this.props.changeFunction(this.state)) // wtf is this, 
         // why do i need an arrow function for a callback, is this a js moment
-
-        
-
-        
     }
 
 
@@ -35,14 +32,13 @@ class TodoItem extends React.Component{
         }
 
         return(
-            <div className="">
-                <input type="checkbox" checked={this.state.checked} onChange={this.handleCheck}/>
-                <p style={{textDecoration:textDecor}}>{this.props.items.text}</p>
+            <div className="list-item">
+                <p className="input-text" style={{textDecoration:textDecor}}>{this.props.items.text}</p>
+                <input className="input-checkbox" type="checkbox" checked={this.state.checked} onChange={this.handleCheck}/>
             </div>
         )
     }
 }
 
-// BUG: todo-item 4 checkbox is misaligned due to checking it
 
 export default TodoItem;

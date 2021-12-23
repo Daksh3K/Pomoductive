@@ -1,0 +1,20 @@
+.list-item {
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.input-checkbox {
+    margin-right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #DEDEDE;
+    border: #DEDEDE;
+}
+
+.input-text {
+    margin-left: 1rem;
+}
