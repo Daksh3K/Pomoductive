@@ -16,7 +16,8 @@ class App extends React.Component {
   }
 
   /**
-   * Function is called whenever a todo-item is checked
+   * Function is called whenever the delete button of 
+   * a todo item is pressed
    * @param {object} childState
    */
   handleItemDelete = (childID) => {
