@@ -12,13 +12,15 @@
 }
 
 .todo-item-checkbox {
+  flex-shrink: 0;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background: #b2b2b2;
   border: none;
   border-radius: 0.2em;
   cursor: pointer;
+  margin-left: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,19 +30,15 @@
   background: #c84b31;
 }
 
-.todo-item-checkbox:after {
-  content: "\2713";
-  color: #191919;
+.todo-item-checkbox:checked {
   display: none;
 }
 
-.todo-item-checkbox:checked {
-  background-color: #c84b31;
-}
-
-.todo-item-checkbox:checked::after {
+/* .todo-item-checkbox:checked::after {
+  content: "\2713";
+  color: #2d4263;
   display: block;
-}
+} */
 
 .todo-item-buttons {
   display: flex;
@@ -48,7 +46,8 @@
   justify-content: flex-start;
 }
 
-button {
+.todo-item-delete-button {
+  flex-shrink: 0;
   box-sizing: border-box;
   width: 16px;
   height: 16px;
@@ -58,10 +57,34 @@ button {
   margin-right: 5px;
 }
 
-svg {
+.todo-item-delete-svg {
   box-sizing: border-box;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   color: #c84b31;
+  cursor: pointer;
 }
 
+.todo-item-delete-svg:hover {
+  color: #d36f5a;
+}
+
+.todo-item-check-svg {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  color: #c84b31;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.todo-item-checksvgbutton {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-right: 5px;
+}

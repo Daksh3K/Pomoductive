@@ -16,20 +16,19 @@ class App extends React.Component {
   }
 
   /**
-   * Function is called whenever the delete button of 
+   * Function is called whenever the delete button of
    * a todo item is pressed
    * @param {object} childState
    */
   handleItemDelete = (childID) => {
     this.setState((prevState) => {
-        for (var [index, item] of prevState.todos.entries()) {
-            if (item.id === parseInt(childID)) {
-                console.log("found")
-                prevState.todos.splice(index, 1);
-            }
+      for (var [index, item] of prevState.todos.entries()) {
+        if (item.id === parseInt(childID)) {
+          prevState.todos.splice(index, 1);
         }
-        return { todos: prevState.todos };
-    })
+      }
+      return { todos: prevState.todos };
+    });
   };
 
   /**
@@ -74,7 +73,7 @@ class App extends React.Component {
         prevTodos.push(newItem);
         return { todos: prevTodos, text: "" };
       },
-      () => console.log('new item created')
+      () => console.log("new item created")
     );
   };
 
@@ -100,6 +99,8 @@ class App extends React.Component {
     ));
     return (
       <main>
+        <div className="timer-container"> </div>
+
         <div className="todo-container elevation-1">
           <h1 className="todo-heading"> To-Do List </h1>
           <hr className="todo-heading-line" />
