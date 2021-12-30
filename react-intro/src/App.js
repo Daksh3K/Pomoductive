@@ -1,6 +1,7 @@
 import React from "react";
 import TodoItem from "./components/TodoItem";
 import todosData from "./todosData"; // to-do list data
+import Timer from "./components/Timer";
 
 var todos = todosData;
 
@@ -99,7 +100,9 @@ class App extends React.Component {
     ));
     return (
       <main>
-        <div className="timer-container"> </div>
+        <div className="timer-container">
+          <Timer />
+        </div>
 
         <div className="todo-container elevation-1">
           <h1 className="todo-heading"> To-Do List </h1>

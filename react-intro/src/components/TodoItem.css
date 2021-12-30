@@ -1,37 +1,37 @@
 .todo-item-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
 }
 
 .todo-item-text {
-  color: #b2b2b2;
-  font-size: 16px;
+    color: #b2b2b2;
+    font-size: 16px;
 }
 
 .todo-item-checkbox {
-  flex-shrink: 0;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  background: #b2b2b2;
-  border: none;
-  border-radius: 0.2em;
-  cursor: pointer;
-  margin-left: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    flex-shrink: 0;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #b2b2b2;
+    border: none;
+    border-radius: 0.2em;
+    cursor: pointer;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .todo-item-checkbox:hover {
-  background: #c84b31;
+    background: #c84b31;
 }
 
 .todo-item-checkbox:checked {
-  display: none;
+    display: none;
 }
 
 /* .todo-item-checkbox:checked::after {
@@ -41,50 +41,50 @@
 } */
 
 .todo-item-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .todo-item-delete-button {
-  flex-shrink: 0;
-  box-sizing: border-box;
-  width: 16px;
-  height: 16px;
-  border: none;
-  background: transparent;
-  padding: 0;
-  margin-right: 5px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-right: 5px;
 }
 
 .todo-item-delete-svg {
-  box-sizing: border-box;
-  width: 18px;
-  height: 18px;
-  color: #c84b31;
-  cursor: pointer;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    color: #c84b31;
+    cursor: pointer;
 }
 
 .todo-item-delete-svg:hover {
-  color: #d36f5a;
+    color: #d36f5a;
 }
 
 .todo-item-check-svg {
-  box-sizing: border-box;
-  width: 18px;
-  height: 18px;
-  color: #c84b31;
-  cursor: pointer;
-  margin-left: 5px;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    color: #c84b31;
+    cursor: pointer;
+    margin-left: 5px;
 }
 
 .todo-item-checksvgbutton {
-  flex-shrink: 0;
-  box-sizing: border-box;
-  width: 18px;
-  height: 18px;
-  border: none;
-  background: transparent;
-  padding: 0;
-  margin-right: 5px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-right: 5px;
 }
