@@ -1,14 +1,20 @@
 import React from "react";
 import "./timer.css";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 class Timer extends React.Component {
   constructor(props) {
     super(props);
+    this.workMin = React.createRef();
+    this.breakMin = React.createRef();
+    this.interval = React.createRef();
+
     this.state = {
-      workMin: 25,
-      breakMin: 5,
       minutes: 25,
       seconds: 0,
+      isWork: true,
+      isStarted: false,
       showSettings: false,
     };
   }
@@ -20,12 +26,70 @@ class Timer extends React.Component {
   };
 
   handleWorkChange = (e) => {
-    this.setState({ workMin: e.target.value });
+    this.workMin.current = parseInt(e.target.value);
+    this.setState((prevState) => {
+      return {
+        minutes: !prevState.isWork
+          ? this.breakMin.current
+          : this.workMin.current,
+        seconds: 0,
+        isStarted: false,
+      };
+    });
+    clearInterval(this.interval.current);
   };
 
   handleBreakChange = (e) => {
-    this.setState({ breakMin: e.target.value });
+    this.breakMin.current = parseInt(e.target.value);
+    this.setState((prevState) => {
+      return {
+        minutes: !prevState.isWork
+          ? this.breakMin.current
+          : this.workMin.current,
+        seconds: 0,
+        isStarted: false,
+      };
+    });
+    clearInterval(this.interval.current);
   };
+
+  timerStart = () => {
+    this.setState({ isStarted: true });
+    this.interval.current = setInterval(() => {
+      if (this.state.seconds === 0) {
+        if (this.state.minutes !== 0) {
+          this.setState((prevState) => {
+            return { minutes: prevState.minutes - 1, seconds: 59 };
+          });
+        } else {
+          this.setState((prevState) => {
+            return {
+              isWork: !prevState.isWork,
+              minutes: prevState.isWork
+                ? this.breakMin.current
+                : this.workMin.current,
+            };
+          });
+          // handle timer change
+        }
+      } else {
+        this.setState((prevState) => {
+          return { seconds: prevState.seconds - 1 };
+        });
+      }
+    }, 1000);
+  };
+
+  timerStop = () => {
+    clearInterval(this.interval.current);
+    this.setState({ isStarted: false });
+  };
+
+  componentDidMount() {
+    this.workMin.current = 25;
+    this.breakMin.current = 5;
+    // this.setState({minutes: this.workMin.current})
+  }
 
   render() {
     const timerMinutes =
@@ -34,14 +98,25 @@ class Timer extends React.Component {
       this.state.seconds < 10 ? `0${this.state.seconds}` : this.state.seconds;
 
     return (
-      <div>
+      <div className="timer-container">
+
+        <div className="timer-progressbar-container">
+          <CircularProgressbar
+            value={(this.state.minutes * 60 + this.state.seconds)}
+            minValue={0}
+            maxValue={
+              this.state.isWork
+                ? this.workMin.current * 60
+                : this.breakMin.current * 60
+            }
+          />
+        </div>
         <div className="timer-text">
           {timerMinutes}:{timerSeconds}
         </div>
         <button className="timer-settings-button" onClick={this.showSettings}>
           Settings
         </button>
-
         <div
           className="timer-settings-container"
           style={{ display: this.state.showSettings ? "block" : "none" }}
@@ -74,14 +149,22 @@ class Timer extends React.Component {
             className="timer-settings-input-work"
             id="work-min"
             onChange={this.handleWorkChange}
+            defaultValue="25"
           />
           <label for="break-min">Break Minutes</label>
           <input
             className="timer-settings-input-break"
             id="break-min"
             onChange={this.handleBreakChange}
+            defaultValue="5"
           />
         </div>
+        <button
+          className="timer-start-button"
+          onClick={this.state.isStarted ? this.timerStop : this.timerStart}
+        >
+          {this.state.isStarted ? "Stop" : "Start"}
+        </button>
       </div>
     );
   }
