@@ -99,21 +99,24 @@ class Timer extends React.Component {
 
     return (
       <div className="timer-container">
-        <div className="timer-upper-container">
-          <div className="timer-progressbar-container">
-            <CircularProgressbar
-              value={this.state.minutes * 60 + this.state.seconds}
-              minValue={0}
-              maxValue={
-                this.state.isWork
-                  ? this.workMin.current * 60
-                  : this.breakMin.current * 60
-              }
-            />
-          </div>
-          <div className="timer-text">
-            {timerMinutes}:{timerSeconds}
-          </div>
+        <button
+          onClick={this.state.isStarted ? this.timerStop : this.timerStart}
+        >
+          {this.state.isStarted ? "Stop" : "Start"}
+        </button>
+        <div className="timer-progressbar-container">
+          <CircularProgressbar
+            value={this.state.minutes * 60 + this.state.seconds}
+            minValue={0}
+            maxValue={
+              this.state.isWork
+                ? this.workMin.current * 60
+                : this.breakMin.current * 60
+            }
+          />
+        </div>
+        <div className="timer-text">
+          {timerMinutes}:{timerSeconds}
         </div>
         <button className="timer-settings-button" onClick={this.showSettings}>
           <svg
@@ -179,12 +182,6 @@ class Timer extends React.Component {
             defaultValue="5"
           />
         </div>
-        <button
-          className="timer-start-button"
-          onClick={this.state.isStarted ? this.timerStop : this.timerStart}
-        >
-          {this.state.isStarted ? "Stop" : "Start"}
-        </button>
       </div>
     );
   }

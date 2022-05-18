@@ -6,7 +6,7 @@
   position: relative;
   width: 30vw;
   height: 65vh;
-  padding: 0 2rem 0 2rem;
+  /* padding: 0 2rem 0 2rem; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,10 +52,6 @@
   height: 30px;
 }
 
-.timer-start-button {
-  position: absolute;
-  bottom: 0;
-}
 
 .timer-upper-container {
   position: absolute;

@@ -100,9 +100,7 @@ class App extends React.Component {
     ));
     return (
       <main>
-        <div className="timer-container">
-          <Timer />
-        </div>
+        <Timer />
 
         <div className="todo-container elevation-1">
           <h1 className="todo-heading"> To-Do List </h1>
