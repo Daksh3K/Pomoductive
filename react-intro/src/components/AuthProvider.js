@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 
@@ -14,14 +14,29 @@ export default function AuthProvider({ children }) {
         "Content-Type": "application/json"
       }
     }).then((user) => {
-      console.log(`${user.email.password} logged in`);
+      console.log(`${user.data.email} logged in`);
+      setUser(user);
+    })
+  }
+
+  const signInUser = (email, password) => {
+    axios.post("http://localhost:5000/signin", {
+      email: email,
+      password: password
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((user) => {
+      console.log(`${user.data.email} logged in`)
       setUser(user);
     })
   }
 
   const value = {
     user: user,
-    createUser: createUser
+    createUser: createUser,
+    signInUser: signInUser,
   }
 
   return (

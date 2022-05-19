@@ -1,20 +1,21 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
 
 import { AuthContext } from "../AuthContext";
 
-export default function Signup() {
+export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { signInUser } = useContext(AuthContext);
 
-  const handleUserCreation = (event) => {
+  const handleUserSignIn = (event) => {
     event.preventDefault();
-    createUser(email, password);
+    console.log(email, password)
+    signInUser(email, password)
   };
 
   return (
     <div>
-      <form onSubmit={handleUserCreation}>
+      <form onSubmit={handleUserSignIn}>
         <input
           type="email"
           placeholder="email"
@@ -29,7 +30,7 @@ export default function Signup() {
             setPassword(e.target.value);
           }}
         />
-        <input type="submit" value="Sign Up"/>
+        <input type="submit" value="Sign In" />
       </form>
     </div>
   );

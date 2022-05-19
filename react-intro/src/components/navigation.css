@@ -1,0 +1,39 @@
+.navigation-container {
+  min-height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4rem 0 4rem;
+  font-size: 1.1rem;
+}
+
+.navigation-home-logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #c84b31;
+  margin-right: 1em;
+}
+
+.navigation-component {
+  font-size: inherit;
+  color: #d4d4d4;
+  text-decoration: none;
+  margin: 0 0.4em 0 0.4em;
+}
+
+.navigation-action-button {
+  box-sizing: border-box;
+  font-size: inherit;
+  color: #d4d4d4;
+  background-color: #c84b31;
+  border: none;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  border-radius: 0.2em;
+}
+
+.navigation-action-button:hover {
+  background-color: #d36f5a;
+  transition: 0.4s;
+}
