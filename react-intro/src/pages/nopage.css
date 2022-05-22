@@ -1,0 +1,30 @@
+.body {
+  box-sizing: border-box;
+  margin:  0 7rem 0 7rem;
+  padding: 10rem 0 12rem 0;
+}
+
+.nopage-heading {
+  font-size: 4rem;
+  color: #c84b31;
+}
+
+.text {
+  font-size: 1.4rem;
+  color: #d4d4d4;
+  margin-top: 0.5em;
+}
+
+.link-container {
+  margin-top: 1em;
+}
+
+.link {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #d36f5a;
+}
+
+.link:not(:first-child) {
+  margin-top: 10px;
+}

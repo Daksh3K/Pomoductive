@@ -4,7 +4,9 @@ import "./navigation.css";
 
 export default function Navigation() {
   const activeStyle = {
-    color: "red",
+    textDecoration: "underline",
+    textDecorationColor: "#c84b31",
+    textDecorationThickness: "0.1em",
   };
 
   const activeStyleFunc = ({ isActive }) => {
