@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import { AuthContext } from "../AuthContext";
@@ -7,7 +7,7 @@ import "./signin.css";
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, error, updateError } = useContext(AuthContext);
 
   const handleUserSignIn = (event) => {
     event.preventDefault();
@@ -15,10 +15,23 @@ export default function Signin() {
     signInUser(email, password);
   };
 
+  /**
+  * This useEffect is run whenever the Signup page is
+  * initally loaded and when it is dismounted.
+  * This useEffect nullifies any existing error due
+  * to sigin or signup errors in AuthProvider
+  */
+  useEffect(() => {
+    return () => {
+      updateError(null);
+    }
+  }, [])
+
   return (
     <div className="auth-body elevation-1">
       <form className="auth-form" onSubmit={handleUserSignIn}>
         <h1 className="auth-title">Sign In</h1>
+        { error ? <div> { error.response.data } </div> : null}
         <label htmlFor="email-input">Email</label>
         <input
           type="email"
@@ -41,7 +54,7 @@ export default function Signin() {
         <input type="submit" value="Sign In" />
       </form>
       <p>
-        Don't have an account?<NavLink className="auth-navlink" to="signup">Register here</NavLink>
+        Don't have an account?<NavLink className="auth-navlink" to="../signup">Register here</NavLink>
       </p>
     </div>
   );

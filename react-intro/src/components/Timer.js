@@ -3,6 +3,12 @@ import "./timer.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
+/*
+ * this variable is used to track how much the
+ * user has worked in seconds
+ */
+var timeWorkedInSeconds = 0;
+
 class Timer extends React.Component {
   constructor(props) {
     super(props);
@@ -77,7 +83,13 @@ class Timer extends React.Component {
           return { seconds: prevState.seconds - 1 };
         });
       }
+      // increments timeWorkedInSeconds by a second
+      if (this.state.isWork) {
+        timeWorkedInSeconds += 1;
+        console.log(timeWorkedInSeconds)
+      }
     }, 1000);
+
   };
 
   timerStop = () => {
